@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SNEK — Classic Snake Game</title>
+  <title>SNEK - Classic Snake Game</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -12,7 +12,6 @@
 
   <main class="shell">
 
-    <!-- Header -->
     <header class="hdr">
       <div class="hdr__logo">SNEK</div>
       <div class="hdr__scores">
@@ -27,7 +26,6 @@
       </div>
     </header>
 
-    <!-- Speed indicator -->
     <div class="speed-bar" id="speedBar">
       <span class="speed-bar__label">SPEED</span>
       <div class="speed-bar__track">
@@ -36,28 +34,48 @@
       <span class="speed-bar__level" id="speedLevel">1</span>
     </div>
 
-    <!-- Canvas wrapper -->
+    <section class="settings" aria-label="Game settings">
+      <label class="field">
+        <span class="field__label">MODE</span>
+        <select class="field__control" id="difficultySelect">
+          <option value="chill">Chill</option>
+          <option value="normal" selected>Normal</option>
+          <option value="fast">Fast</option>
+        </select>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="wallMode" />
+        <span>Walls</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="soundToggle" checked />
+        <span>Sound</span>
+      </label>
+      <label class="toggle">
+        <input type="checkbox" id="gridToggle" checked />
+        <span>Grid</span>
+      </label>
+    </section>
+
     <div class="arena" id="arena">
       <canvas id="gameCanvas"></canvas>
 
-      <!-- Overlay: Start -->
       <div class="overlay" id="overlayStart">
         <div class="overlay__card">
-          <div class="overlay__emoji">🐍</div>
+          <div class="overlay__emoji">S</div>
           <h2 class="overlay__title">Ready to Snek?</h2>
-          <p class="overlay__sub">Use arrow keys or swipe to move.<br>Eat food. Grow. Survive.</p>
+          <p class="overlay__sub">Use arrows, WASD, or swipe to move.<br>Eat food. Grow. Survive.</p>
           <button class="btn btn--primary" id="btnStart">Start Game</button>
           <div class="overlay__hint">
-            <kbd>↑</kbd><kbd>↓</kbd><kbd>←</kbd><kbd>→</kbd>
-            &nbsp;or swipe on mobile
+            <kbd>Space</kbd><kbd>P</kbd><kbd>Esc</kbd>
+            <span>start, pause, resume</span>
           </div>
         </div>
       </div>
 
-      <!-- Overlay: Game Over -->
       <div class="overlay overlay--hidden" id="overlayDead">
         <div class="overlay__card overlay__card--dead">
-          <div class="overlay__emoji">💀</div>
+          <div class="overlay__emoji">X</div>
           <h2 class="overlay__title">Game Over</h2>
           <div class="result-grid">
             <div class="result-item">
@@ -81,28 +99,25 @@
         </div>
       </div>
 
-      <!-- Overlay: Paused -->
       <div class="overlay overlay--hidden" id="overlayPause">
         <div class="overlay__card">
-          <div class="overlay__emoji">⏸</div>
+          <div class="overlay__emoji">II</div>
           <h2 class="overlay__title">Paused</h2>
           <button class="btn btn--primary" id="btnResume">Resume</button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile controls -->
     <div class="dpad" id="dpad" aria-label="Direction controls">
-      <button class="dpad__btn dpad__btn--up"   data-dir="UP"    aria-label="Up">▲</button>
-      <button class="dpad__btn dpad__btn--left"  data-dir="LEFT"  aria-label="Left">◀</button>
-      <button class="dpad__btn dpad__btn--right" data-dir="RIGHT" aria-label="Right">▶</button>
-      <button class="dpad__btn dpad__btn--down"  data-dir="DOWN"  aria-label="Down">▼</button>
+      <button class="dpad__btn dpad__btn--up" data-dir="UP" aria-label="Up">UP</button>
+      <button class="dpad__btn dpad__btn--left" data-dir="LEFT" aria-label="Left">L</button>
+      <button class="dpad__btn dpad__btn--right" data-dir="RIGHT" aria-label="Right">R</button>
+      <button class="dpad__btn dpad__btn--down" data-dir="DOWN" aria-label="Down">DN</button>
     </div>
 
-    <!-- Pause button -->
     <div class="footer-row">
-      <button class="btn btn--ghost" id="btnPause">⏸ Pause</button>
-      <span class="footer-tip">P to pause</span>
+      <button class="btn btn--ghost" id="btnPause">Pause</button>
+      <span class="footer-tip">Space starts/restarts, P pauses</span>
     </div>
 
   </main>
